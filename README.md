@@ -17,6 +17,9 @@ Phát triển bởi team 3 người, mỗi người phụ trách một module đ
 | 🎵 Chọn playlist / file nhạc | `src/ui/music_panel.py` | Người 3 |
 | 🔔 Desktop notification | `src/core/notification.py` | Người 2 |
 | 📅 Lịch sử học tập | `src/core/history.py` | Người 3 |
+| 🛡️ Chặn app gây sao nhãng (Whitelist/Blacklist) | `src/core/focus_guard.py`<br>`src/ui/distraction_panel.py` | Người 3 |
+| 📊 Dashboard thống kê | `src/ui/dashboard_panel.py` | Người 3 |
+| 💾 Lưu cấu hình người dùng | `src/core/app_config.py` | Người 3 |
 
 ---
 
@@ -54,18 +57,22 @@ promodo_timer_PyPj/
 │   └── skills/
 │
 ├── src/
-│   ├── core/                   # 👤 Người 2 (+ history của Người 3)
+│   ├── core/                   # 👤 Người 2 (+ tính năng của Người 3)
 │   │   ├── timer.py            # Logic Pomodoro
 │   │   ├── music_player.py     # Phát nhạc nền
 │   │   ├── notification.py     # Desktop notification
-│   │   └── history.py          # Lịch sử phiên JSON – Người 3
+│   │   ├── history.py          # Lịch sử phiên JSON – Người 3
+│   │   ├── focus_guard.py      # Logic chặn app – Người 3
+│   │   └── app_config.py       # Quản lý cấu hình – Người 3
 │   │
 │   └── ui/                     # 👤 Người 1 + Người 3
 │       ├── main_window.py      # Cửa sổ chính – Người 1
 │       ├── timer_widget.py     # Đồng hồ + nút – Người 1
 │       ├── theme.py            # Màu sắc + font – Người 1
 │       ├── settings_panel.py   # Form cài đặt – Người 3
-│       └── music_panel.py      # UI chọn nhạc – Người 3
+│       ├── music_panel.py      # UI chọn nhạc – Người 3
+│       ├── dashboard_panel.py  # Dashboard thống kê – Người 3
+│       └── distraction_panel.py # UI chặn app (White/Blacklist) – Người 3
 │
 └── tests/
     ├── test_timer.py

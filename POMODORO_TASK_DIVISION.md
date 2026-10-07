@@ -12,9 +12,6 @@ Dự án **Pomodoro App bằng Python** tập trung vào các tính năng chính
 - Chọn playlist / file nhạc
 - Desktop notification
 - Lịch sử học tập
-
-Các tính năng đã được loại bỏ để giảm khối lượng công việc:
-
 - Chặn app gây sao nhãng
 - Whitelist / Blacklist
 - Dashboard thống kê
@@ -35,6 +32,9 @@ Các tính năng đã được loại bỏ để giảm khối lượng công vi
 | 🎵 Chọn playlist / file nhạc | `src/ui/music_panel.py` | Người 3 |
 | 🔔 Desktop notification | `src/core/notification.py` | Người 2 |
 | 📅 Lịch sử học tập | `src/core/history.py` | Người 3 |
+| 🛡️ Chặn app gây sao nhãng (Whitelist/Blacklist) | `src/core/focus_guard.py`<br>`src/ui/distraction_panel.py` | Người 3 |
+| 📊 Dashboard thống kê | `src/ui/dashboard_panel.py` | Người 3 |
+| 💾 Lưu cấu hình người dùng | `src/core/app_config.py` | Người 3 |
 
 ---
 
@@ -70,7 +70,7 @@ src/ui/
 - Thiết kế bố cục menu, button, label
 - Kết nối giao diện với các module Core
 
-**Khối lượng dự kiến:** khoảng **35%**
+**Khối lượng dự kiến:** khoảng **30%**
 
 ---
 
@@ -121,23 +121,27 @@ class PomodoroTimer:
 
 Người làm GUI chỉ cần gọi các hàm trên mà không cần biết chi tiết logic bên trong.
 
-**Khối lượng dự kiến:** khoảng **35%**
+**Khối lượng dự kiến:** khoảng **30%**
 
 ---
 
-### Người 3 — Settings + Music UI + History
+### Người 3 — Settings + Music UI + History + Focus Guard + Dashboard
 
-Phụ trách các màn hình phụ và lịch sử sử dụng.
+Phụ trách các màn hình phụ, lịch sử sử dụng, tính năng chặn app (Focus Guard) và thống kê (Dashboard).
 
 #### Module
 
 ```text
 src/ui/
 ├── settings_panel.py
-└── music_panel.py
+├── music_panel.py
+├── dashboard_panel.py
+└── distraction_panel.py
 
 src/core/
-└── history.py
+├── history.py
+├── focus_guard.py
+└── app_config.py
 ```
 
 #### Công việc
@@ -146,12 +150,13 @@ src/core/
   - Work
   - Short Break
   - Long Break
-- Kiểm tra dữ liệu nhập
-- Giao diện chọn file nhạc
-- Playlist đơn giản
-- Hiển thị tên bài hát đang phát
+- Giao diện chọn file nhạc, playlist đơn giản
 - Lưu lịch sử các phiên Pomodoro
 - Hiển thị màn hình lịch sử học tập
+- Quản lý tính năng chặn các ứng dụng gây sao nhãng (Focus Guard)
+- Giao diện cài đặt Whitelist / Blacklist (Distraction Panel)
+- Hiển thị Dashboard thống kê số phiên
+- Lưu và quản lý cấu hình người dùng (App Config)
 
 #### Ví dụ dữ liệu lịch sử
 
@@ -176,7 +181,7 @@ data/history.csv
 
 Không bắt buộc sử dụng database nếu muốn giữ project nhẹ.
 
-**Khối lượng dự kiến:** khoảng **30%**
+**Khối lượng dự kiến:** khoảng **40%**
 
 ---
 
@@ -195,14 +200,18 @@ PomodoroApp/
 │   │   ├── timer.py
 │   │   ├── music_player.py
 │   │   ├── notification.py
-│   │   └── history.py
+│   │   ├── history.py
+│   │   ├── focus_guard.py
+│   │   └── app_config.py
 │   │
 │   └── ui/
 │       ├── main_window.py
 │       ├── timer_widget.py
 │       ├── theme.py
 │       ├── settings_panel.py
-│       └── music_panel.py
+│       ├── music_panel.py
+│       ├── dashboard_panel.py
+│       └── distraction_panel.py
 │
 ├── data/
 │   └── history.json
@@ -288,9 +297,9 @@ Không nên code trực tiếp trên `main`.
 ## 7. Phân bố khối lượng tổng thể
 
 ```text
-Người 1: ████████░░  35%
-Người 2: ████████░░  35%
-Người 3: ███████░░░  30%
+Người 1: ███████░░░  30%
+Người 2: ███████░░░  30%
+Người 3: █████████░  40%
 ```
 
 Cách chia này giúp:
