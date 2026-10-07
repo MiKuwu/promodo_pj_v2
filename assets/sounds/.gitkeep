@@ -1,0 +1,4 @@
+# Placeholder – thư mục này chứa file âm thanh thông báo (.wav, .mp3)
+# Ví dụ: bell.wav, ding.mp3
+# Không commit file âm thanh lên Git nếu dung lượng lớn.
+# Thêm vào .gitignore nếu cần.

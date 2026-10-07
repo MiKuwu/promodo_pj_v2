@@ -1,0 +1,3 @@
+# Placeholder – thư mục này chứa file nhạc nền (.mp3, .wav, .ogg)
+# Không commit file nhạc lên Git vì dung lượng lớn.
+# Thêm vào .gitignore nếu cần: assets/music/*.mp3
